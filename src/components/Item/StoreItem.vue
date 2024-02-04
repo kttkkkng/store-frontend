@@ -28,7 +28,7 @@ const emits = defineEmits(['selected'])
   position: relative;
   display: grid;
   grid-template-rows: 1fr min-content;
-  max-width: max(200px, 30%);
+  // max-width: max(200px, 30%);
   min-height: 70px;
   cursor: pointer;
   filter: drop-shadow(0 1px 2px #DDDDDD);

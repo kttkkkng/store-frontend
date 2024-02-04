@@ -21,7 +21,5 @@ export const useUserStore = defineStore('user', {
     refresh_token: '',
     open_nav_bar: false,
   }),
-  persist: {
-    enabled: true,
-  },
+  persist: true,
 })

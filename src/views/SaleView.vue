@@ -51,8 +51,8 @@ const select_category = ref(category_list.value[0])
 const product_list = ref(UserStore.product_list)
 
 const filtered_product_list = computed(
-  () => product_list.value
-  .filter(each => !UserStore.store.store_id || typeof each.store[UserStore.store.store_id] == 'number')
+  () => !UserStore.store.store_id ? [] : product_list.value
+  .filter(each => typeof each.store[UserStore.store.store_id] == 'number')
   .filter(each => !select_category.value.category_id || each.category.includes(select_category.value.category_id))
 )
 
