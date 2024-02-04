@@ -30,6 +30,11 @@ const router = createRouter({
           name: 'category',
           component: () => import('../views/CategoryView.vue'),
         },
+        {
+          path: 'history',
+          name: 'history',
+          component: () => import('../views/HistoryView.vue'),
+        },
       ],
     },
     {

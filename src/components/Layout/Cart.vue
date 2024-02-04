@@ -58,6 +58,7 @@ async function Checkout () {
   try {
     await backend.post('/store/sale/checkout', {
       store_id: UserStore.store.store_id,
+      totalprice: CartStore.total_price,
       sale_product: CartStore.product.map(each => ({
         product_id: each.product_id,
         product_img: each.product_img,
