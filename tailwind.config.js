@@ -7,10 +7,17 @@ export default {
         'surface-0': 'white',
         'main': {
           'primary': '#4daa57',
-          'secondary': '#6ee08c',
+          'secondary': '#43bf64',
+          'tertiary': '#60c67b',
+          'quaternary': '#97d4a7',
+          'background': '#e2f5df'
         },
         'green': {
           'primary': '#4daa57',
+        },
+        'yellow': {
+          'primary': '#ffe91f',
+          'background': '#fffed4',
         },
         'gray': {
           'secondary': '#DDDDDD',

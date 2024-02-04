@@ -1,17 +1,18 @@
 <template>
-  <div class="flex flex-col items-center justify-center h-screen">
-    <form @submit.prevent="Login" class="login-panel space-y-4">
+  <div class="flex flex-col items-center justify-center h-screen bg-main-background">
+    <form @submit.prevent="Login" class="login-panel space-y-2">
       <p>Username</p>
-      <InputText v-model="username" placeholder="username" />
+      <InputText class="w-full" v-model="username" placeholder="username" />
       <p>Password</p>
-      <InputText v-model="password" placeholder="password" type="password" />
-      <button type="submit" class="w-full border border-black rounded-lg">submit</button>
+      <InputText class="w-full" v-model="password" placeholder="password" type="password" />
+      <FillButton type="submit" class="w-full !mt-4">Login</FillButton>
     </form>
   </div>
 </template>
 
 <script setup>
 import { backend } from '@/api/backend.js';
+import FillButton from '@/components/Button/FillButton.vue';
 import { useUserStore } from '@/stores/UserStore.js';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
@@ -39,7 +40,7 @@ async function Login () {
 <style scoped>
 .login-panel {
   padding: 2rem;
-  border: 1px solid var(--color-text);
   border-radius: 12px;
+  background-color: white;
 }
 </style>
