@@ -2,7 +2,7 @@
   <div class="history-layout">
     <div>
       <p class="option">history</p>
-      <div>
+      <div class="gallery">
         <HistoryItem
           v-for="(history, index) in history_list" :total-price="history.total_price"
           @click="select_history_index = index"
@@ -49,9 +49,6 @@ async function HistoryList () {
     height: 100%;
   
     > div {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr));
-      grid-auto-rows: min-content;
       gap: 8px;
       overflow-y: scroll;
       overflow-x: hidden;

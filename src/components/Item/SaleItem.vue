@@ -53,8 +53,7 @@ function Animate () {
   position: relative;
   display: grid;
   grid-template-rows: 1fr min-content;
-  // max-width: max(200px, 30%);
-  min-height: 100px;
+  aspect-ratio: 1;
   align-items: center;
   height: fit-content;
   cursor: pointer;

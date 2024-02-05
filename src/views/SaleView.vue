@@ -2,7 +2,7 @@
   <div class="sale-layout">
     <div @click="select = 'category'" class="category-layout">
       <p class="option">categories: {{ select_category.category_name }}</p>
-      <div>
+      <div class="gallery">
         <div
           v-for="category in category_list"
           @click.stop="SelectCategory(category)"
@@ -14,7 +14,7 @@
     </div>
     <div @click="select = 'product'" class="product-layout" :hide="select == 'category'">
       <p class="option">products</p>
-      <div>
+      <div class="gallery">
         <SaleItem
           v-for="product in filtered_product_list"
           :product_detail="product"
@@ -101,9 +101,6 @@ async function SaleList () {
   background-color: var(--main-background);
 
   > div {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr));
-    grid-auto-rows: min-content;
     gap: 8px;
     overflow-y: scroll;
     overflow-x: hidden;
@@ -143,9 +140,6 @@ async function SaleList () {
   }
 
   > div {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr));
-    grid-auto-rows: min-content;
     gap: 8px;
     overflow-y: scroll;
     flex: 1 1 0;

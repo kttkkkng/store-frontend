@@ -2,7 +2,7 @@
   <div class="product-layout">
     <div>
       <p class="option">product</p>
-      <div>
+      <div class="gallery">
         <ProductItem
           v-for="(product, index) in product_list"
           @click="SelectProduct(index)"
@@ -58,9 +58,6 @@ function AddNewProduct () {
     height: 100%;
   
     > div {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr));
-      grid-auto-rows: min-content;
       gap: 8px;
       overflow-y: scroll;
       overflow-x: hidden;

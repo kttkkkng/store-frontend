@@ -1,5 +1,5 @@
 <template>
-  <div class="sale-card">
+  <div v-if="props.modelValue.amount" class="sale-card">
     <h1 class="product_name">{{ props.modelValue.product_name }}</h1>
     <div class="price">
       <InputNumber class="max-w-[40%]" input-class="h-8 w-full" v-model="amount" @update:model-value="Update" />

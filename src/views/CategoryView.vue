@@ -2,7 +2,7 @@
   <div class="category-layout">
     <div>
       <p class="option">category</p>
-      <div>
+      <div class="gallery">
         <CategoryItem
           v-for="(category, index) in category_list"
           @click="SelectCategory(index)"
@@ -58,9 +58,6 @@ function AddNewCategory () {
     height: 100%;
   
     > div {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(150px, 100%), 1fr));
-      grid-auto-rows: min-content;
       gap: 8px;
       overflow-y: scroll;
       overflow-x: hidden;

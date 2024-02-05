@@ -9,7 +9,6 @@
       <CartItem
         v-for="(product, index) in CartStore.product"
         v-model="CartStore.product[index]"
-        @update:model-value="value => !value.amount && CartStore.product.splice(index, 1)"
       />
     </div>
     <div>
@@ -30,7 +29,7 @@
       </div>
       <FillButton
         class="w-full"
-        :disabled="CartStore.product.length == 0"
+        :disabled="CartStore.product.filter(each => each.amount).length == 0"
         @click="Checkout"
       >
         Check Out
@@ -44,7 +43,7 @@ import { useCartStore } from '@/stores/CartStore.js';
 import { useOrderStore } from '@/stores/OrderStore.js';
 import CartItem from '../Item/CartItem.vue';
 import FillButton from '@/components/Button/FillButton.vue';
-import { ref } from 'vue';
+import { nextTick, ref } from 'vue';
 import { backend } from '@/api/backend.js';
 import { useUserStore } from '@/stores/UserStore.js';
 
@@ -88,7 +87,7 @@ async function Checkout () {
   padding: 1rem 0;
   gap: 8px;
   height: 100%;
-  width: min(300px, 50vw);
+  width: min(350px, 40vw);
   border-left: 1px solid var(--gray-secondary);
 
   > * {
