@@ -61,7 +61,7 @@ const filtered_product_list = computed(
     return product
     .filter(each => {
       const index = each.page[UserStore.page.page_id]
-      if (index) {
+      if (typeof index == 'number') {
         each.page_index = index
         return true
       }
