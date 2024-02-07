@@ -24,9 +24,7 @@
         />
       </div>
     </div>
-    <div class="product-page">
-      
-    </div>
+    <PageSelection />
   </div>
   <Cart/>
 </template>
@@ -35,6 +33,7 @@
 import { backend } from '@/api/backend.js';
 import SaleItem from '@/components/Item/SaleItem.vue'
 import Cart from '@/components/Layout/Cart.vue';
+import PageSelection from '@/components/Layout/PageSelection.vue';
 import { useCartStore } from '@/stores/CartStore.js';
 import { useUserStore } from '@/stores/UserStore.js';
 import { computed, ref } from 'vue';
@@ -54,9 +53,21 @@ const select_category = ref(category_list.value[0])
 const product_list = ref(UserStore.product_list)
 
 const filtered_product_list = computed(
-  () => !UserStore.store.store_id ? [] : product_list.value
-  .filter(each => typeof each.store[UserStore.store.store_id] == 'number')
-  .filter(each => !select_category.value.category_id || each.category.includes(select_category.value.category_id))
+  () => {
+    if (!UserStore.store.store_id) return []
+    const product = product_list.value
+    .filter(each => typeof each.store[UserStore.store.store_id] == 'number')
+    if (!UserStore.page.page_id) return product
+    return product
+    .filter(each => {
+      const index = each.page[UserStore.page.page_id]
+      if (index) {
+        each.page_index = index
+        return true
+      }
+      return false
+    }).sort((a, b) => a.page_index - b.page_index)
+  }
 )
 
 // function SelectCategory (category) {

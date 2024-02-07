@@ -1,7 +1,7 @@
 <template>
   <div class="page-selection-tab">
     <p v-for="page in UserStore.page_list" :select="page.page_id == UserStore.page.page_id" @click="UserStore.page = page">{{ page.page_name }}</p>
-    <p @click="UserStore.page_list.push({ page_id: -1, new_page_name: 'new page', page_name: 'new page' })"><i class="pi pi-plus"/></p>
+    <p v-if="$route.name == 'page'" @click="UserStore.page_list.push({ page_id: -1, new_page_name: 'new page', page_name: 'new page' })"><i class="pi pi-plus"/></p>
   </div>
 </template>
 

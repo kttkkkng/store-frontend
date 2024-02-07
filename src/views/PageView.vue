@@ -25,11 +25,9 @@ import { computed, ref } from 'vue';
 
 const UserStore = useUserStore()
 
-if (UserStore.page?.page_id < 0) {
-  UserStore.page = {
-    page_id: 0,
-    page_name: '',
-  }
+UserStore.page = {
+  page_id: 0,
+  page_name: '',
 }
 
 const product_list = ref([])
