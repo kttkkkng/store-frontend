@@ -4,6 +4,7 @@
       <li :selected="route.name == 'sale'" @click="GoTo('sale')">Sale</li>
       <li :selected="route.name == 'store'" @click="GoTo('store')">Store</li>
       <li :selected="route.name == 'product'" @click="GoTo('product')">Product</li>
+      <li :selected="route.name == 'page'" @click="GoTo('page')">Page</li>
       <li :selected="route.name == 'category'" @click="GoTo('category')">Category</li>
       <li :selected="route.name == 'history'" @click="GoTo('history')">History</li>
       <!-- <li :selected="route.name == 'user'" @click="GoTo('user')">User</li> -->

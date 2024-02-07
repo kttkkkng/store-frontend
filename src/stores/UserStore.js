@@ -14,6 +14,12 @@ export const useUserStore = defineStore('user', {
         category_name: 'All',
       },
     ],
+    page: {
+      page_id: 0,
+      page_name: '',
+      product: [],
+    },
+    page_list: [],
     company_id: 2,
     nickname: 'user',
     search: '',

@@ -1,6 +1,6 @@
 <template>
   <div class="sale-layout">
-    <div @click="select = 'category'" class="category-layout">
+    <!-- <div @click="select = 'category'" class="category-layout">
       <p class="option">categories: {{ select_category.category_name }}</p>
       <div class="gallery">
         <div
@@ -11,9 +11,9 @@
           {{ category.category_name }}
         </div>
       </div>
-    </div>
-    <div @click="select = 'product'" class="product-layout" :hide="select == 'category'">
-      <p class="option">products</p>
+    </div> -->
+    <div class="product-layout">
+      <!-- <p class="option">products</p> -->
       <div class="gallery">
         <SaleItem
           v-for="product in filtered_product_list"
@@ -23,6 +23,9 @@
           @set="CartStore.SetProduct"
         />
       </div>
+    </div>
+    <div class="product-page">
+      
     </div>
   </div>
   <Cart/>
@@ -41,7 +44,7 @@ const UserStore = useUserStore()
 
 const select = ref('product')
 
-CategoryList()
+// CategoryList()
 SaleList()
 
 const category_list = ref(UserStore.category_list)
@@ -56,25 +59,25 @@ const filtered_product_list = computed(
   .filter(each => !select_category.value.category_id || each.category.includes(select_category.value.category_id))
 )
 
-function SelectCategory (category) {
-  select_category.value = category
-  select.value = 'product'
-}
+// function SelectCategory (category) {
+//   select_category.value = category
+//   select.value = 'product'
+// }
 
-async function CategoryList () {
-  try {
-    const response = await backend.get('/category/list')
-    category_list.value = response.data
-    category_list.value.unshift({
-      category_id: null,
-      category_name: 'All',
-    })
-    UserStore.category_list = category_list.value
-    select_category.value = category_list.value[0]
-  } catch (error) {
+// async function CategoryList () {
+//   try {
+//     const response = await backend.get('/category/list')
+//     category_list.value = response.data
+//     category_list.value.unshift({
+//       category_id: null,
+//       category_name: 'All',
+//     })
+//     UserStore.category_list = category_list.value
+//     select_category.value = category_list.value[0]
+//   } catch (error) {
     
-  }
-}
+//   }
+// }
 
 async function SaleList () {
   try {
@@ -89,56 +92,47 @@ async function SaleList () {
 
 <style lang="scss" scoped>
 .sale-layout {
-  position: relative;
+  display: grid;
+  grid-template-rows: 1fr min-content;
   overflow: hidden;
 }
 
-.category-layout {
-  display: flex;
-  padding: 1rem;
-  flex-direction: column;
-  height: calc(100% - 40px);
-  background-color: var(--main-background);
+// .category-layout {
+//   display: flex;
+//   padding: 1rem;
+//   flex-direction: column;
+//   height: calc(100% - 40px);
+//   background-color: var(--main-background);
 
-  > div {
-    gap: 8px;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    flex: 1 1 0;
+//   > div {
+//     gap: 8px;
+//     overflow-y: scroll;
+//     overflow-x: hidden;
+//     flex: 1 1 0;
 
-    > div {
-      padding: 0.5rem;
-      width: 100%;
-      min-width: 100px;
-      min-height: 50px;
-      background-color: white;
-    }
-  }
-}
+//     > div {
+//       padding: 0.5rem;
+//       width: 100%;
+//       min-width: 100px;
+//       min-height: 50px;
+//       background-color: white;
+//     }
+//   }
+// }
 .product-layout {
-  position: absolute;
-  padding: 1rem 0;
+  padding: 1rem 0 0 0;
   width: 100%;
-  height: calc(100% - 50px);
   top: 50px;
   display: flex;
   flex-direction: column;
 
-  filter: drop-shadow(0 0 1px var(--color-text));
-  border-radius: 12px 12px 0 0;
   background-color: white;
-
-  transition: all 500ms ease-out;
 
   > * {
     padding-left: 1rem;
     padding-right: 1rem;
   }
 
-  &[hide=true] {
-    top: calc(100% - 50px);
-  }
-
   > div {
     gap: 8px;
     overflow-y: scroll;
@@ -146,15 +140,20 @@ async function SaleList () {
   }
 }
 
-.option {
-  font-size: 20px;
-  margin-bottom: 8px;
+.product-page {
+  display: flex;
+  border-top: 1px solid var(--gray-secondary);
 }
 
-.selected {
-  font-size: 16px;
-  font-weight: 600;
-  color: white;
-  background-color: var(--green-primary) !important;
-}
+// .option {
+//   font-size: 20px;
+//   margin-bottom: 8px;
+// }
+
+// .selected {
+//   font-size: 16px;
+//   font-weight: 600;
+//   color: white;
+//   background-color: var(--green-primary) !important;
+// }
 </style>
