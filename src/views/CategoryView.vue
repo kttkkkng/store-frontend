@@ -1,7 +1,6 @@
 <template>
   <div class="category-layout">
     <div>
-      <p class="option">category</p>
       <div class="gallery">
         <CategoryItem
           v-for="(category, index) in category_list"

@@ -1,7 +1,6 @@
 <template>
   <div class="history-layout">
     <div>
-      <p class="option">history</p>
       <div class="gallery">
         <HistoryItem
           v-for="(history, index) in history_list" :total-price="history.total_price"

@@ -32,6 +32,7 @@
   }
 
   &.octagon {
+    position: relative;
     background: none;
     z-index: 5;
     &::before {

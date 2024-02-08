@@ -1,7 +1,6 @@
 <template>
   <div class="store-layout">
     <div>
-      <p class="option">store</p>
       <div class="gallery">
         <StoreItem
           v-for="(store, index) in store_list"
