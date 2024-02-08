@@ -1,10 +1,16 @@
 <template>
-  <div class="sale-card" @click="Add">
+  <div
+    class="product-item"
+    :style="{ '--background': props.product_detail.color }"
+    :class="props.product_detail.shape"
+    @click="Add"
+  >
     <img v-if="props.product_detail.product_img" :src="props.product_detail.product_img">
-    <p class="product-name" :class="{ 'text-center': !props.product_detail.product_img }">
+    <p class="product-name">
       {{ (props.product_detail.product_index ? props.product_detail.product_index + '. ' : '') + props.product_detail.product_name }}
+      <br/>
+      {{ props.product_detail.product_price }} ฿
     </p>
-    <p class="product-price">{{ props.product_detail.product_price }} ฿</p>
     <input
       v-show="props.amount"
       ref="input"
@@ -49,18 +55,8 @@ function Animate () {
 </script>
 
 <style lang="scss" scoped>
-.sale-card {
+.product-item {
   position: relative;
-  display: grid;
-  grid-template-rows: 1fr min-content;
-  aspect-ratio: 1;
-  align-items: center;
-  height: fit-content;
-  cursor: pointer;
-  background-color: white;
-  border: 1px solid #DDDDDD;
-  border-radius: 12px;
-  filter: drop-shadow(0 1px 2px #DDDDDD);
 
   > img {
     object-fit: cover;
@@ -70,20 +66,14 @@ function Animate () {
   }
 
   > .product-name {
+    text-align: center;
     padding: 0.3rem 0.5rem;
     font-size: 12px;
   }
 
-  > .product-price {
-    position: absolute;
-    font-size: 11px;
-    bottom: 4px;
-    right: 4px;
-  }
-
   > input {
     position: absolute;
-    background-color: #4daa57;
+    background-color: var(--main-primary);
     color: white;
     top: 10%;
     right: -3px;

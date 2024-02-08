@@ -58,7 +58,7 @@ const filtered_product_list = computed(() => props.product_list.filter(each => e
 
 watch(() => UserStore.page, () => {
   if (!UserStore.page.new_page_name) UserStore.page.new_page_name = UserStore.page.page_name
-  if (!UserStore.page.new_product) UserStore.page.new_product = UserStore.page.product || []
+  if (!UserStore.page.new_product) UserStore.page.new_product = [...(UserStore.page.product ?? [])]
 })
 
 function Change () {
@@ -100,7 +100,7 @@ async function SavePageInfo () {
 
 function ResetValue () {
   UserStore.page.new_page_name = UserStore.page.page_name
-  UserStore.page.new_product = UserStore.page.product
+  UserStore.page.new_product = [...(UserStore.page.product ?? [])]
   UserStore.page.is_edit = false
 }
 </script>

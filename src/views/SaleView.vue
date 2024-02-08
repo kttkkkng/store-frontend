@@ -41,14 +41,7 @@ import { computed, ref } from 'vue';
 const CartStore = useCartStore()
 const UserStore = useUserStore()
 
-const select = ref('product')
-
-// CategoryList()
 SaleList()
-
-const category_list = ref(UserStore.category_list)
-
-const select_category = ref(category_list.value[0])
 
 const product_list = ref(UserStore.product_list)
 
@@ -133,7 +126,6 @@ async function SaleList () {
 .product-layout {
   padding: 1rem 0 0 0;
   width: 100%;
-  top: 50px;
   display: flex;
   flex-direction: column;
 

@@ -15,6 +15,31 @@
         <p>Product Price</p>
         <InputNumber v-model="product_detail.new_product_price" @update:model-value="Change" placeholder="product price" />
       </div>
+      <div>
+        <p>Color</p>
+        <div class="flex flex-wrap gap-2">
+          <div
+            v-for="color in ['#DDDDDD', '#82c9f4', '#E5DACE', '#E5CEDA', '#DAE5CE', '#DACEE5', '#CEE5DA', '#CEDAE5', '#E5CECE', '#CEE4E5']"
+            class="color"
+            :select="color == product_detail.new_color"
+            @click="Change(); product_detail.new_color = color"
+            :style="{ '--background': color }"
+          ></div>
+        </div>
+      </div>
+      <div>
+        <p>Shape</p>
+        <div class="flex flex-wrap gap-2">
+          <div
+            v-for="shape in ['square', 'circle', 'round', 'octagon']"
+            class="shape"
+            :class="shape"
+            :select="shape == product_detail.new_shape"
+            @click="Change(); product_detail.new_shape = shape"
+            :style="{ '--background': product_detail.new_color }"
+          ></div>
+        </div>
+      </div>
       <div class="space-y-2">
         <p>Categories</p>
         <div v-for="(category, index) in product_detail.new_category" class="category-dropdown">
@@ -57,6 +82,8 @@ watch(() => props.modelValue, () => {
   if (!product_detail.value.new_product_name) product_detail.value.new_product_name = product_detail.value.product_name
   if (!product_detail.value.new_product_price) product_detail.value.new_product_price = product_detail.value.product_price
   if (!product_detail.value.new_category) product_detail.value.new_category = [...(product_detail.value.category ?? [])]
+  if (!product_detail.value.new_shape) product_detail.value.new_shape = product_detail.value.shape ?? 'square'
+  if (!product_detail.value.new_color) product_detail.value.new_color = product_detail.value.color ?? '#DDDDDD'
 })
 
 function Change () {
@@ -76,6 +103,8 @@ async function SaveProductInfo () {
         product_index: product_detail.value.new_product_index,
         product_name: product_detail.value.new_product_name,
         product_price: product_detail.value.new_product_price,
+        shape: product_detail.value.new_shape,
+        color: product_detail.value.new_color,
       }
       if (product_detail.value.product_id) {
         await backend.put(`/product/${product_detail.value.product_id}/update`, {
@@ -105,6 +134,8 @@ function ResetValue () {
   product_detail.value.new_product_name = props.modelValue.product_name
   product_detail.value.new_product_price = props.modelValue.product_price
   product_detail.value.new_category = [...(props.modelValue.category ?? [])]
+  product_detail.value.new_shape = props.modelValue.shape ?? 'square'
+  product_detail.value.new_color = props.modelValue.color ?? '#DDDDDD'
   product_detail.value.is_edit = false
 }
 
@@ -140,5 +171,63 @@ async function CategoryList () {
   gap: 8px;
   grid-template-columns: 1fr min-content;
   align-items: center;
+}
+
+.shape {
+  --padding: 0.75rem;
+
+  position: relative;
+  padding: var(--padding);
+  width: 60px;
+  height: 60px;
+  border: 1px solid var(--gray-secondary);
+  border-radius: 12px;
+
+  &[select=true] {
+    border-color: var(--main-primary);
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    background-color: var(--background, var(--gray-secondary));
+    width: calc(100% - 2 * var(--padding));
+    height: calc(100% - 2 * var(--padding));
+  }
+
+  &.circle::before {
+    border-radius: 100%;
+  }
+
+  &.round::before {
+    border-radius: 8px;
+  }
+
+  &.octagon::before {
+    clip-path: polygon(var(--octagon));
+  }
+}
+
+.color {
+  --padding: 0.5rem;
+  position: relative;
+  padding: var(--padding);
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--gray-secondary);
+  border-radius: 100%;
+
+  &[select=true] {
+    border-color: var(--main-primary);
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    background-color: var(--background);
+    border-radius: 100%;
+    width: calc(100% - 2 * var(--padding));
+    height: calc(100% - 2 * var(--padding));
+  }
 }
 </style>

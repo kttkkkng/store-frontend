@@ -1,18 +1,17 @@
 <template>
   <div
-    class="product-card"
+    class="product-item"
     :edited="props.product_detail?.is_edit"
     :new="props.product_detail && !props.product_detail.product_name"
+    :style="{ '--background': props.product_detail?.new_color || props.product_detail?.color }"
+    :class="props.product_detail?.new_shape || props.product_detail?.shape"
     @click="emits('selected', props.product_detail)"
   >
     <template v-if="props.product_detail">
       <template v-if="props.product_detail.product_img">
         <img :src="props.product_detail.product_img">
-        <p class="text-left">
-          {{ product_name }}
-        </p>
       </template>
-      <p v-else class="text-center">
+      <p class="text-center">
         {{ product_name }}
       </p>
     </template>
@@ -43,20 +42,10 @@ const product_name = computed(() => {
 </script>
 
 <style lang="scss" scoped>
-.product-card {
+.product-item {
   position: relative;
-  display: grid;
-  grid-template-rows: 1fr min-content;
-  aspect-ratio: 1;
-  cursor: pointer;
-  filter: drop-shadow(0 1px 2px #DDDDDD);
-  background-color: white;
-  border-radius: 12px;
-  border: 1px solid #DDDDDD;
-  align-items: center;
-  overflow: hidden;
 
-  &::before {
+  &::after {
     display: hidden;
     position: absolute;
     text-align: center;
@@ -69,7 +58,7 @@ const product_name = computed(() => {
   }
 
   &[edited=true] {
-    &::before {
+    &::after {
       color: white;
       background-color: var(--main-primary);
       display: block;
@@ -78,7 +67,7 @@ const product_name = computed(() => {
   }
 
   &[new=true] {
-    &::before {
+    &::after {
       background-color: var(--yellow-primary);
       display: block;
       content: 'new';

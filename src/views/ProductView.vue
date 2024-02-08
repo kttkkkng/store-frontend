@@ -1,7 +1,6 @@
 <template>
   <div class="product-layout">
     <div>
-      <p class="option">product</p>
       <div class="gallery">
         <ProductItem
           v-for="(product, index) in product_list"
@@ -64,10 +63,5 @@ function AddNewProduct () {
       flex: 1 1 0;
     }
   }
-}
-
-.option {
-  font-size: 20px;
-  margin-bottom: 8px;
 }
 </style>
