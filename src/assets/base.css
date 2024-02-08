@@ -47,6 +47,40 @@
   }
 }
 
+.fill-button {
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  color: white;
+  background-color: var(--color, var(--green-primary));
+  border: 1px solid var(--color, var(--green-primary));
+
+  transition-property: border-color, background-color;
+  transition-duration: 200ms;
+  transition-timing-function: linear;
+
+  &:disabled {
+    background-color: var(--gray-secondary);
+    cursor: not-allowed;
+  }
+}
+
+.outline-button {
+  border-radius: 0.5rem;
+  padding: 0.5rem 1rem;
+  color: var(--color, var(--green-primary));
+  border: 1px solid var(--color, var(--green-primary));
+
+  transition-property: border-color, color;
+  transition-duration: 200ms;
+  transition-timing-function: linear;
+
+  &:disabled {
+    color: var(--gray-secondary);
+    border-color: var(--gray-secondary);
+    cursor: not-allowed;
+  }
+}
+
 .gallery {
   display: grid;
   grid-template-columns: repeat(var(--gallery-column, 1), 1fr);

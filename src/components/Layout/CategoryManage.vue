@@ -8,9 +8,9 @@
         <InputText v-model="category_detail.new_category_name" @update:model-value="Change" placeholder="category name" />
       </div>
 
-      <div v-if="category_detail.is_edit && category_detail.new_category_name">
-        <button @click="ResetValue" class="mr-2">Cancel</button>
-        <button @click="SaveCategoryInfo">Save</button>
+      <div class="ml-auto" v-if="category_detail.is_edit && category_detail.new_category_name">
+        <button class="outline-button mr-4" style="--color: red" @click="ResetValue">Cancel</button>
+        <button class="fill-button" @click="SaveCategoryInfo">Save</button>
       </div>
     </div>
   </div>
@@ -62,6 +62,7 @@ function ResetValue () {
 .category {
   width: min(300px, 30vw);
   border-left: 1px solid var(--gray-secondary);
+  overflow-y: auto;
   > div {
     height: 100%;
     display: flex;

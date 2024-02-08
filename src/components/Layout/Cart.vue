@@ -27,13 +27,13 @@
           <p>{{ OrderStore.TotalPriceAfterAddCost(CartStore.total_price, additional_cost).toLocaleString('en-US') }}</p>
         </div>
       </div>
-      <FillButton
-        class="w-full"
+      <button
+        class="fill-button w-full"
         :disabled="CartStore.product.filter(each => each.amount).length == 0"
         @click="Checkout"
       >
         Check Out
-      </FillButton>
+      </button>
     </div>
   </div>
 </template>
@@ -42,7 +42,6 @@
 import { useCartStore } from '@/stores/CartStore.js';
 import { useOrderStore } from '@/stores/OrderStore.js';
 import CartItem from '../Item/CartItem.vue';
-import FillButton from '@/components/Button/FillButton.vue';
 import { nextTick, ref } from 'vue';
 import { backend } from '@/api/backend.js';
 import { useUserStore } from '@/stores/UserStore.js';

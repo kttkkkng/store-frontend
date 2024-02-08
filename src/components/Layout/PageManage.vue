@@ -30,9 +30,9 @@
           </div>
         </div>
 
-      <div v-if="UserStore.page.is_edit && UserStore.page.new_page_name">
-        <button @click="ResetValue" class="mr-2">Cancel</button>
-        <button @click="SavePageInfo">Save</button>
+      <div class="ml-auto" v-if="UserStore.page.is_edit && UserStore.page.new_page_name">
+        <button class="outline-button mr-4" style="--color: red" @click="ResetValue">Cancel</button>
+        <button class="fill-button" @click="SavePageInfo">Save</button>
       </div>
     </div>
   </div>
@@ -109,6 +109,7 @@ function ResetValue () {
 .page {
   width: min(300px, 30vw);
   border-left: 1px solid var(--gray-secondary);
+  overflow-y: auto;
   > div {
     height: 100%;
     display: flex;

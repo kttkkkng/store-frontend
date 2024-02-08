@@ -5,14 +5,13 @@
       <InputText class="w-full" v-model="username" placeholder="username" />
       <p>Password</p>
       <InputText class="w-full" v-model="password" placeholder="password" type="password" />
-      <FillButton type="submit" class="w-full !mt-4">Login</FillButton>
+      <button type="submit" class="fill-button w-full !mt-4">Login</button>
     </form>
   </div>
 </template>
 
 <script setup>
 import { backend } from '@/api/backend.js';
-import FillButton from '@/components/Button/FillButton.vue';
 import { useUserStore } from '@/stores/UserStore.js';
 import { ref } from 'vue';
 import { useRouter } from 'vue-router';
