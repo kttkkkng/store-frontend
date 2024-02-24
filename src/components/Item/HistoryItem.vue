@@ -1,23 +1,22 @@
 <template>
   <div class="history-card">
-    <p class="total-price">
-      {{ props.totalPrice }} ฿
-    </p>
-    <!-- <p class="sale-time">{{ props }}</p> -->
+    <p class="detail">{{ props.soldTime }}</p>
+    <p class="detail">{{ props.totalPrice }} ฿</p>
+    <p class="sale-id">{{ props.saleId }}</p>
   </div>
 </template>
 
 <script setup>
-const props = defineProps(['totalPrice'])
+const props = defineProps(['totalPrice', 'soldTime', 'saleId'])
 </script>
 
 <style lang="scss" scoped>
 .history-card {
   position: relative;
   display: grid;
-  grid-template-rows: 1fr min-content;
   aspect-ratio: 1;
   align-items: center;
+  place-content: center;
   height: fit-content;
   cursor: pointer;
   background-color: white;
@@ -25,17 +24,18 @@ const props = defineProps(['totalPrice'])
   border-radius: 12px;
   filter: drop-shadow(0 1px 2px #DDDDDD);
 
-  > .total-price {
+  > .detail {
     padding: 0.3rem 0.5rem;
-    font-size: 12px;
+    font-size: 15px;
     text-align: center;
   }
 
-  > .sale-time {
+  > .sale-id {
     position: absolute;
-    font-size: 11px;
-    bottom: 4px;
-    right: 4px;
+    text-align: right;
+    font-size: 5px;
+    top: 3px;
+    right: 3px;
   }
 }
 </style>

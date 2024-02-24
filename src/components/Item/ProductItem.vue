@@ -68,6 +68,7 @@ const product_name = computed(() => {
 
   &[new=true] {
     &::after {
+      color: var(--color-text);
       background-color: var(--yellow-primary);
       display: block;
       content: 'new';
