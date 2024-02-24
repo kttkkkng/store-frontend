@@ -1,6 +1,6 @@
 <template>
   <div
-    class="product-item"
+    class="product-item text-4"
     :edited="props.product_detail?.is_edit"
     :new="props.product_detail && !props.product_detail.product_name"
     :style="{ '--background': props.product_detail?.new_color || props.product_detail?.color }"

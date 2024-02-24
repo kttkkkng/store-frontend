@@ -2,15 +2,15 @@
   <div class="store">
     <div v-if="store_detail">
       <div>
-        <p class="header">Store Info</p>
+        <p class="header text-1">Store Info</p>
       </div>
 
-      <div>
+      <div class="text-3">
         <p>Store Name</p>
         <InputText v-model="store_detail.new_store_name" @update:model-value="Change" placeholder="store name" />
       </div>
 
-      <div class="product-container">
+      <div class="product-container text-3">
         <p class="mb-2">Product</p>
         <span class="relative">
           <i class="pi pi-search absolute top-2/4 -mt-2 left-3 text-surface-400 dark:text-surface-600" />
@@ -32,7 +32,7 @@
         </div>
       </div>
 
-      <div class="ml-auto" v-if="store_detail.is_edit && store_detail.new_store_name">
+      <div class="ml-auto text-3" v-if="store_detail.is_edit && store_detail.new_store_name">
         <button class="outline-button mr-4" style="--color: red" @click="ResetValue">Cancel</button>
         <button class="fill-button" @click="SaveStoreInfo">Save</button>
       </div>

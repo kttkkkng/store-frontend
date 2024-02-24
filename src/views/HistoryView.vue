@@ -1,7 +1,7 @@
 <template>
   <div class="history-layout">
     <div v-for="sale_day in sorted_history">
-      <p class="option">{{ sale_day.date.format('DD/MM/YYYY') }}</p>
+      <p class="text-4 mb-2">{{ sale_day.date.format('DD/MM/YYYY') }}</p>
       <div class="gallery">
         <HistoryItem
           v-for="(history_detail, index) in sale_day.list"
@@ -88,10 +88,5 @@ async function HistoryList () {
       flex: 1 1 0;
     }
   }
-}
-
-.option {
-  font-size: 16px;
-  margin-bottom: 8px;
 }
 </style>

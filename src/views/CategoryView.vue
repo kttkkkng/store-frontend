@@ -64,9 +64,4 @@ function AddNewCategory () {
     }
   }
 }
-
-.option {
-  font-size: 20px;
-  margin-bottom: 8px;
-}
 </style>

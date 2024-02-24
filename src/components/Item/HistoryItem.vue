@@ -1,5 +1,5 @@
 <template>
-  <div class="history-card">
+  <div class="history-card text-4">
     <p class="detail">{{ props.soldTime }}</p>
     <p class="detail">{{ props.totalPrice }} ฿</p>
     <p class="sale-id">{{ props.saleId }}</p>
@@ -26,7 +26,6 @@ const props = defineProps(['totalPrice', 'soldTime', 'saleId'])
 
   > .detail {
     padding: 0.3rem 0.5rem;
-    font-size: 15px;
     text-align: center;
   }
 

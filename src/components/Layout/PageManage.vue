@@ -1,36 +1,40 @@
 <template>
   <div class="page">
     <div v-if="UserStore.page?.page_id">
-      <p class="header">Page Info</p>
+      <div class="px-4">
+        <p class="header text-1">Page Info</p>
+      </div>
 
-      <div>
+      <div class="text-3 px-4">
         <p>Page Name</p>
         <InputText v-model="UserStore.page.new_page_name" @update:model-value="Change" placeholder="page name" />
       </div>
 
-      <div class="product-container">
-        <p class="mb-2">Product</p>
-        <span class="relative">
-          <i class="pi pi-search absolute top-2/4 -mt-2 left-3 text-surface-400 dark:text-surface-600" />
-          <InputText v-model="product_search" placeholder="Search" class="pl-10 h-8 w-full" />
-        </span>
-        <div class="product-list">
-            <div v-for="(product, index) in filtered_product_list" class="flex items-center">
-              <Checkbox
-                v-model="UserStore.page.new_product"
-                :inputId="`product_${index}`"
-                input-class="w-auto h-auto mt-1"
-                :value="product.product_id"
-                @update:model-value="Change"
-              />
-              <label :for="`product_${index}`" class="ml-2">
-                {{ product.product_name }}
-              </label>
-            </div>
+      <div class="product-container text-3">
+        <div class="px-4">
+          <p class="mb-2 product-underline">Product</p>
+          <span class="relative">
+            <i class="pi pi-search absolute top-2/4 -mt-2 left-3 text-surface-400 dark:text-surface-600" />
+            <InputText v-model="product_search" placeholder="Search" class="pl-10 h-8 w-full" />
+          </span>
+        </div>
+        <div class="product-list px-4">
+          <div v-for="(product, index) in filtered_product_list" class="flex items-center">
+            <Checkbox
+              v-model="UserStore.page.new_product"
+              :inputId="`product_${index}`"
+              input-class="pl-2 scale-150"
+              :value="product.product_id"
+              @update:model-value="Change"
+            />
+            <label :for="`product_${index}`" class="ml-2">
+              {{ product.product_name }}
+            </label>
           </div>
         </div>
+      </div>
 
-      <div class="ml-auto" v-if="UserStore.page.is_edit && UserStore.page.new_page_name">
+      <div class="ml-auto text-3" v-if="UserStore.page.is_edit && UserStore.page.new_page_name">
         <button class="outline-button mr-4" style="--color: red" @click="ResetValue">Cancel</button>
         <button class="fill-button" @click="SavePageInfo">Save</button>
       </div>
@@ -114,7 +118,7 @@ function ResetValue () {
     height: 100%;
     display: flex;
     flex-direction: column;
-    padding: 1rem;
+    padding: 1rem 0;
     gap: 8px;
   }
 }
@@ -133,10 +137,10 @@ function ResetValue () {
   flex: 0 1 auto;
   overflow-y: hidden;
   padding-bottom: 0.25rem !important;
+}
 
-  > p {
-    border-bottom: 1px solid var(--color-text);
-    padding-bottom: 0.25rem;
-  }
+.product-underline {
+  border-bottom: 1px solid var(--color-text);
+  padding-bottom: 0.25rem;
 }
 </style>

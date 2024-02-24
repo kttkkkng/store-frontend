@@ -2,11 +2,11 @@
   <div class="cart">
     <template v-if="props.detail">
       <div>
-        <div class="header">
+        <div class="header text-1">
           <p>Cart Items</p>
         </div>
       </div>
-      <div class="product-list space-y-2">
+      <div class="product-list space-y-2 text-4">
         <HistoryCartItem
           v-for="(product, index) in props.detail.sale_product"
           v-model="props.detail.sale_product[index]"
@@ -16,7 +16,7 @@
       <div>
         <div class="sale-conclude py-2">
           <div class="price-calculation">
-            <p>Subtotal</p>
+            <p class="text-4">Subtotal</p>
             <p class="ml-auto">{{ props.detail.total_price.toLocaleString('en-US') }}</p>
 
             <!-- <template v-for="cost in additional_cost" class="flex justify-between">
@@ -24,7 +24,7 @@
               <InputNumber v-model="cost.amount" input-class="w-1/4 min-w-0 h-5 text-right text-[11px]" placeholder="0"/>
             </template> -->
           </div>
-          <div class="total-price flex justify-between">
+          <div class="total-price flex justify-between text-2">
             <p>Total</p>
             <p>{{ OrderStore.TotalPriceAfterAddCost(props.detail.total_price, additional_cost).toLocaleString('en-US') }}</p>
           </div>
@@ -81,10 +81,6 @@ const props = defineProps(['detail'])
     grid-template-columns: 1fr 2fr;
     gap: 4px;
     align-items: center;
-    
-    > p {
-      font-size: 10px;
-    }
   }
 
   > .total-price {

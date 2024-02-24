@@ -1,5 +1,5 @@
 <template>
-  <div class="nav" :open="UserStore.open_nav_bar">
+  <div class="nav text-3" :open="UserStore.open_nav_bar">
     <ul>
       <li :selected="route.name == 'sale'" @click="GoTo('sale')">Sale</li>
       <li :selected="route.name == 'store'" @click="GoTo('store')">Store</li>

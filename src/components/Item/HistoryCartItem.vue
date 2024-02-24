@@ -1,5 +1,5 @@
 <template>
-  <div class="history-sale-card">
+  <div class="history-sale-card text-4">
     <h1 class="product_name">{{ props.modelValue.product_name }}</h1>
     <div class="price">
       <p>{{ props.modelValue.amount }}X</p>

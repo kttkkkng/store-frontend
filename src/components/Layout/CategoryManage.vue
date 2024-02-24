@@ -1,14 +1,14 @@
 <template>
   <div class="category">
     <div v-if="category_detail">
-      <p class="header">Category Info</p>
+      <p class="header text-1">Category Info</p>
 
-      <div>
+      <div class="text-3">
         <p>Category Name</p>
         <InputText v-model="category_detail.new_category_name" @update:model-value="Change" placeholder="category name" />
       </div>
 
-      <div class="ml-auto" v-if="category_detail.is_edit && category_detail.new_category_name">
+      <div class="ml-auto text-3" v-if="category_detail.is_edit && category_detail.new_category_name">
         <button class="outline-button mr-4" style="--color: red" @click="ResetValue">Cancel</button>
         <button class="fill-button" @click="SaveCategoryInfo">Save</button>
       </div>

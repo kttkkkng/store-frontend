@@ -6,7 +6,7 @@
     @click="Add"
   >
     <img v-if="props.product_detail.product_img" :src="props.product_detail.product_img">
-    <p class="product-name">
+    <p class="product-name text-3">
       {{ (props.product_detail.product_index ? props.product_detail.product_index + '. ' : '') + props.product_detail.product_name }}
       <br/>
       {{ props.product_detail.product_price }} ฿
@@ -15,6 +15,7 @@
       v-show="props.amount"
       ref="input"
       type="number"
+      class="text-3"
       :style="`--length: ${Math.floor(Math.log10(props.amount ?? 1)) + 1}`"
       :value="props.amount"
       @click.stop
@@ -68,7 +69,7 @@ function Animate () {
   > .product-name {
     text-align: center;
     padding: 0.3rem 0.5rem;
-    font-size: 12px;
+    word-break: break-all;
   }
 
   > input {

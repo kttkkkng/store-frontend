@@ -1,6 +1,6 @@
 <template>
   <div
-    class="category-card"
+    class="category-card text-4"
     :edited="props.category_detail?.is_edit"
     :new="props.category_detail && !props.category_detail.category_name"
     @click="emits('selected', props.category_detail)"

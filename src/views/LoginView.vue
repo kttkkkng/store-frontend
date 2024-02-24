@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col items-center justify-center h-screen bg-main-background">
+  <div class="flex flex-col items-center justify-center h-screen bg-main-background text-3">
     <form @submit.prevent="Login" class="login-panel space-y-2">
       <p>Username</p>
       <InputText class="w-full" v-model="username" placeholder="username" />

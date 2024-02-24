@@ -1,21 +1,21 @@
 <template>
   <div class="product">
     <div v-if="product_detail">
-      <p class="header">Product Info</p>
+      <p class="header text-1">Product Info</p>
 
-      <div>
+      <div class="text-3">
         <p>Product Index</p>
         <InputNumber v-model="product_detail.new_product_index" @update:model-value="Change" :use-grouping="false" placeholder="product index" />
       </div>
-      <div>
+      <div class="text-3">
         <p>Product Name</p>
         <InputText v-model="product_detail.new_product_name" @update:model-value="Change" placeholder="product name" />
       </div>
-      <div>
+      <div class="text-3">
         <p>Product Price</p>
         <InputNumber v-model="product_detail.new_product_price" @update:model-value="Change" placeholder="product price" />
       </div>
-      <div>
+      <div class="text-3">
         <p>Color</p>
         <div class="flex flex-wrap gap-2">
           <div
@@ -27,7 +27,7 @@
           ></div>
         </div>
       </div>
-      <div>
+      <div class="text-3">
         <p>Shape</p>
         <div class="flex flex-wrap gap-2">
           <div
@@ -40,7 +40,7 @@
           ></div>
         </div>
       </div>
-      <div class="space-y-2">
+      <div class="space-y-2 text-3">
         <p>Categories</p>
         <div v-for="(category, index) in product_detail.new_category" class="category-dropdown">
           <Dropdown
@@ -54,10 +54,12 @@
           />
           <i @click="RemoveCategory" class="grow-0 pi pi-trash" style="color: red" />
         </div>
-        <button @click="product_detail.new_category.push(null)" class="flex items-center gap-1 text-xs border border-[var(--color-text)] rounded-lg p-2"><i class="pi pi-plus"/>Add Category</button>
+        <button @click="product_detail.new_category.push(null)" class="text-4 flex items-center gap-1 border border-[var(--color-text)] rounded-lg p-2">
+          <i class="pi pi-plus"/>Add Category
+        </button>
       </div>
 
-      <div class="ml-auto" v-if="product_detail.is_edit && (product_detail.new_product_name || product_detail.new_product_price)">
+      <div class="ml-auto text-3" v-if="product_detail.is_edit && (product_detail.new_product_name || product_detail.new_product_price)">
         <button class="outline-button mr-4" style="--color: red" @click="ResetValue">Cancel</button>
         <button class="fill-button" @click="SaveProductInfo">Save</button>
       </div>

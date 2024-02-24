@@ -1,8 +1,10 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
+import SlipModal from './components/Modal/SlipModal.vue';
 </script>
 
 <template>
+  <SlipModal />
   <RouterView />
 </template>
 

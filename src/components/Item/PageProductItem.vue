@@ -1,6 +1,6 @@
 <template>
   <div
-    class="product-item"
+    class="product-item text-4"
     :style="{ '--background': props.product_detail.color }"
     :class="props.product_detail.shape"
   >

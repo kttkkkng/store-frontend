@@ -1,6 +1,6 @@
 <template>
   <div
-    class="store-card"
+    class="store-card text-4"
     :edited="props.store_detail?.is_edit"
     :new="props.store_detail && !props.store_detail.store_name"
     @click="emits('selected', props.store_detail)"

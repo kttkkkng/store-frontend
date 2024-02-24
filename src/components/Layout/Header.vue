@@ -1,5 +1,5 @@
 <template>
-  <div class="header bg-main-primary">
+  <div class="header text-3 bg-main-primary">
     <div aria-haspopup="true" aria-controls="overlay_menu" class="store-select">
       <i @click="UserStore.open_nav_bar = true" class="pi pi-bars" style="color: white"></i>
       <template v-if="route.name == 'sale' || route.name == 'history'">
@@ -12,7 +12,7 @@
     <Menu ref="menu" :model="UserStore.store_list.map(each => ({ label: each.store_name, command: () => ChangeStore(each) }))" popup/>
     <span class="relative">
       <i class="pi pi-search absolute top-2/4 -mt-2 left-3 text-surface-400 dark:text-surface-600" />
-      <InputText placeholder="Search" class="pl-10 h-8" />
+      <InputText placeholder="Search" class="pl-10 h-10" />
     </span>
     <p class="justify-self-end" style="color: white">{{ UserStore.nickname }}</p>
   </div>
@@ -55,9 +55,5 @@ function StoreDropdown (event) {
   grid-template-columns: repeat(4, max-content);
   align-items: center;
   gap: 12px;
-}
-
-.pi {
-  font-size: 18px;
 }
 </style>
